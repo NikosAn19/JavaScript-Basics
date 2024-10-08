@@ -1,0 +1,41 @@
+.main__table {
+  width: 100%;
+  background-color: #fff5;
+  color: black;
+
+  overflow: scroll;
+  margin: 0;
+  box-shadow: 0 0.4rem 0.8rem rgb(27, 26, 26);
+  border-radius: 5px;
+}
+
+.container__table {
+  display: flex;
+  width: 70%;
+
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 100px;
+
+  outline: none;
+}
+
+tr:nth-of-type(even) {
+  background-color: rgb(177, 172, 175);
+}
+th {
+  color: black !important;
+  padding: 5px;
+  text-align: center;
+}
+tr {
+  text-align: center;
+}
+th:hover {
+  cursor: pointer;
+  /* background-color:white; */
+}
+tr:hover {
+  cursor: pointer;
+  background-color: rgb(122, 194, 28);
+}
