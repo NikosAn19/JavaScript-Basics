@@ -10,13 +10,14 @@
 }
 
 .container__table {
-  display: flex;
   width: 70%;
-
-  justify-content: center;
   margin: 0 auto;
   margin-top: 100px;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
   outline: none;
 }
 
@@ -31,11 +32,35 @@ th {
 tr {
   text-align: center;
 }
+tr:hover {
+  cursor: pointer;
+  background-color: rgb(122, 194, 28);
+}
 th:hover {
   cursor: pointer;
   /* background-color:white; */
 }
-tr:hover {
-  cursor: pointer;
-  background-color: rgb(122, 194, 28);
+td {
+  padding: 10px;
+}
+.pagination__div {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  border: 1px solid red;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    width: 5%;
+
+    border-radius: 5px;
+    /* background-color: blueviolet; */
+    color: black;
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
+  }
+  button:hover {
+    cursor: pointer;
+  }
 }

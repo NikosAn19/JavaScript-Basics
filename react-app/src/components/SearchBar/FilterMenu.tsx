@@ -5,7 +5,7 @@ export default function FilterMenu() {
     <>
       <div className="search__container">
         <div className="prompt">
-          Search here
+          <strong>Search here</strong>
           <p>Results will show every combination of the fields </p>
         </div>
         <form>

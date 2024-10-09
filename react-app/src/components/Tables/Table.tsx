@@ -1,15 +1,18 @@
-import { useTable } from "react-table";
+import { useTable, usePagination } from "react-table";
 import { useEffect, useMemo } from "react";
-import fakeData from "../../FakeData.json";
+import fakeData from "../../Test-Data/Piston-Data.json";
 import "./Table.css";
 
 interface Data {
-  id: number;
-  first_name: string;
-  last_name: string;
-  email: string;
-  gender: string;
-  university: string;
+  piston_code: string;
+  brand: string;
+  model: string;
+  tact: string;
+  diameter: number;
+  pin_diameter: number;
+  compression_height: number;
+  total_height: number;
+  oversize: number;
 }
 
 function Table() {
@@ -17,35 +20,62 @@ function Table() {
   const columns = useMemo(
     () => [
       {
-        Header: "ID",
-        accessor: "id" as const,
+        Header: "Piston Code",
+        accessor: "piston_code" as const,
       },
       {
-        Header: "First Name",
-        accessor: "first_name" as const,
+        Header: "Brand",
+        accessor: "brand" as const,
       },
       {
-        Header: "Last Name",
-        accessor: "last_name" as const,
+        Header: "Model",
+        accessor: "model" as const,
       },
       {
-        Header: "Email",
-        accessor: "email" as const,
+        Header: "Tact",
+        accessor: "tact" as const,
       },
       {
-        Header: "Gender",
-        accessor: "gender" as const,
+        Header: "Diameter(mm)",
+        accessor: "diameter" as const,
       },
       {
-        Header: "University",
-        accessor: "university" as const,
+        Header: "Pin Diameter(mm)",
+        accessor: "pin_diameter" as const,
+      },
+      {
+        Header: "Compression Height(mm)",
+        accessor: "compression_height" as const,
+      },
+      {
+        Header: "Total Height(mm)",
+        accessor: "total_height" as const,
+      },
+      {
+        Header: "Oversize(mm)",
+        accessor: "oversize" as const,
       },
     ],
     []
   );
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data });
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    page,
+    nextPage,
+    previousPage,
+    canNextPage,
+    canPreviousPage,
+    pageOptions,
+    state,
+    gotoPage,
+    pageCount,
+    prepareRow,
+  } = useTable({ columns, data }, usePagination);
+
+  const { pageIndex } = state;
 
   return (
     <div className="container__table">
@@ -60,7 +90,7 @@ function Table() {
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {rows.map((row) => {
+          {page.map((row) => {
             prepareRow(row);
             return (
               <tr {...row.getRowProps()}>
@@ -72,6 +102,26 @@ function Table() {
           })}
         </tbody>
       </table>
+      <div className="pagination__div">
+        <span>
+          Page{" "}
+          <strong>
+            {pageIndex + 1} of {pageOptions.length}
+          </strong>
+        </span>
+        <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+          {"<<"}
+        </button>
+        <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+          Previous
+        </button>
+        <button onClick={() => nextPage()} disabled={!canNextPage}>
+          Next
+        </button>
+        <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+          {">>"}
+        </button>
+      </div>
     </div>
   );
 }
