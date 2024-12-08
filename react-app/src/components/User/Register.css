@@ -1,3 +1,5 @@
+@import url("../../CSS/variables.css");
+
 * {
   margin: 0;
   padding: 0;
@@ -7,25 +9,50 @@
 .user__container {
   width: 90%;
   margin: 0 auto;
+  margin-top: 15px;
+
   display: flex;
 
-  height: 50vw;
+  height: 90vh;
 
-  background-color: blueviolet;
-
+  background: var(--background-color);
+  background: var(--background-color);
   border-radius: 5px;
 }
 
+h2 {
+  margin-top: 0px !important;
+}
+.separator {
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+}
+
 .register__area {
+  position: relative;
   width: 50%;
+  /* height: 70%; */
+
+  margin-top: 100px;
+  margin-bottom: 150px;
+  margin-left: 150px;
+  margin-right: 150px;
+
+  background-color: var(--primary-color);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   /* gap: 20px; */
   form {
-    margin-top: 150px;
+    position: absolute;
+    top: 35%;
+    /* border: 1px solid red; */
+    /* margin-top: 150px; */
     width: 50%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,19 +61,22 @@
     button {
       width: 40%;
       border-radius: 5px;
-      background-color: rgb(209, 60, 110);
+      background-color: var(--secondary-color);
       color: white;
       border: none;
     }
     button:hover {
       cursor: pointer;
+      background-color: var(--third-color);
     }
   }
   h2 {
     color: white;
     padding: 5px;
+    padding-bottom: 20px;
     margin-top: 100px;
     margin-bottom: 0px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   }
 
   .input__box {
@@ -56,7 +86,7 @@
   .input__box input {
     width: 100%;
     padding: 10px;
-    background-color: blueviolet;
+    background-color: var(--third-color);
     border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 5px;
     outline: none;
@@ -68,33 +98,59 @@
     padding: 10px;
     left: 0px;
     color: white;
+    pointer-events: none;
   }
   .input__box input:valid ~ span,
   .input__box input:focus ~ span {
-    color: #00dfc4;
+    color: var(--text-color);
     transform: translateX(10px) translateY(-7px);
     transition: all 0.5s;
     padding: 0 10px;
-    background: blueviolet;
+    background: var(--primary-color);
     font-size: 1em;
     border-left: 1px solid #00dfc4;
     border-right: 1px solid #00dfc4;
   }
-
-  .input__box input {
-    margin: 0 auto;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-
-    padding: 10px;
-    background-color: blueviolet;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 5px;
-    outline: none;
-    color: white;
-  }
 }
 .separator {
   border: 1px solid rgba(255, 255, 255, 0.5);
+}
+@media (width <1280px) {
+  .input__box span {
+    font-size: 15px;
+    /* font-weight: 900; */
+  }
+}
+@media (width < 1400px) {
+  .register__area {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+  .input__box span {
+    font-size: 13px;
+    /* font-weight: 900; */
+  }
+}
+
+@media (width < 650px) {
+  .user__container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 20px;
+  }
+
+  .register__area {
+    width: 80%;
+    height: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+
+    form {
+      top: 20%;
+    }
+  }
 }

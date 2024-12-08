@@ -1,0 +1,44 @@
+@import url("../../CSS/variables.css");
+
+.container__actionbar {
+  position: fixed;
+  top: 10%;
+  right: 0%;
+  width: 5.5%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 5px;
+  /* gap: 20px; */
+  background-color: var(--primary-color);
+  z-index: 500;
+}
+
+.container__actionbar ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  list-style-type: none;
+  text-decoration: none;
+}
+.container__actionbar li {
+  color: white;
+  padding: 10px;
+  display: flex;
+  /* gap: 15%; */
+  justify-content: center;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--secondary-color);
+  height: 20%;
+}
+.container__actionbar li:hover {
+  color: --var(--text-color);
+  cursor: pointer;
+  background-color: var(--third-color);
+  transition: all 0.3s;
+}

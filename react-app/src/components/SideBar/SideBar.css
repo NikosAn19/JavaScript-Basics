@@ -1,66 +1,62 @@
-.container__sidebar{
+@import url("../../CSS/variables.css");
+
+.container__sidebar {
   position: fixed;
-  top:60px;
-  left:0px;
-  width:10%;
-  height:100vw;
-  display:flex;
+  top: 10vh;
+  left: 0px;
+  width: 10vw;
+  height: 70vh;
+  display: flex;
   flex-direction: column;
-  gap:20px;
-  /* border:1px solid red; */
-  background-color: blueviolet;
-  ul{
-    padding:0;
-    margin:0;
-    display:flex;
-    flex-direction: column;
-    gap:20px;
-    
-    list-style-type: none;
-    text-decoration: none;
-    li{
-      color:white;
-      padding:15px;
-      display:flex;
-      gap:15%;
-      border:none;
-      border-radius: 5px;
-      background-color: rgb(123, 9, 230);
-      height:20%;
+  gap: 20px;
 
-    }
-    li:hover{
-      color:black;
-      cursor:pointer;
-      background-color: aqua;
-      transition: all 0.3s;
-
-    }
-  }
-
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  z-index: 500;
 }
 
+.container__sidebar ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 
+  list-style-type: none;
+  text-decoration: none;
+}
 
+.container__sidebar li {
+  color: white;
+  padding: 15px;
+  display: flex;
+  gap: 15%;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--secondary-color);
+  height: 20%;
+}
+.container__sidebar li:hover {
+  color: var(--text-color);
+  cursor: pointer;
+  background-color: var(--third-color);
+  transition: all 0.3s;
+}
 
-.hamburger__sidebar{
-  width:100%;
-  height:auto;
-  padding:15px;
+.hamburger__sidebar {
+  width: 100%;
+  height: auto;
+  padding: 15px;
   display: block;
-  
-  cursor:default;
 
-  svg{
-    cursor:pointer;
-    color:white;
-    
-  }
-  svg:hover{
-    
-    border-radius:5px;
-    border:none;
-  }
+  cursor: default;
 
-  
+  svg {
+    cursor: pointer;
+    color: white;
+  }
+  svg:hover {
+    border-radius: 5px;
+    border: none;
+  }
 }

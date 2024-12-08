@@ -1,0 +1,153 @@
+@import url("../../CSS/variables.css");
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.container {
+  position: sticky;
+  top: 0px;
+
+  margin-left: 0;
+  padding-left: 0;
+  max-width: 100vw;
+  min-height: 5vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  /* border: 1px solid black; */
+  gap: 200px;
+  background-color: var(--primary-color);
+}
+
+@media (width < 1000px) {
+  .hamburger {
+    display: block !important;
+  }
+}
+
+@media (width < 1200px) {
+  .box3 {
+    .button {
+      font-size: 12px;
+    }
+    .button__register {
+      font-size: 12px;
+    }
+  }
+  .box3 {
+    display: none !important;
+  }
+  .hamburger {
+    display: block !important;
+  }
+}
+
+.bar {
+  height: 2px;
+  width: 27px;
+  background-color: white;
+  margin: 5px 0;
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+/* @media(max-width: 1536px){
+  .container{
+    max-width:1280px;
+  }
+  .button{
+    font-size:10px;
+  }
+  .box2{
+    li{
+      font-size: 10px;
+    }
+  }
+}
+@media(max-width: 1280px){
+  .container{
+    max-width:1024px;
+  }
+}
+@media(max-width: 1024px){
+  .container{
+    max-width:768px;
+  }
+}
+@media(max-width: 768px){
+  .container{
+    max-width:640px;
+  }
+}
+@media(max-width: 640px){
+  .container{
+    max-width:475px;
+  }
+}
+@media(max-width: 475px){
+  .container{
+    max-width:100%;
+  }
+} */
+
+.box1 {
+  /* border:1px solid red; */
+  flex: 1;
+  padding-top: 3%;
+  flex-shrink: 1;
+
+  flex-grow: 3;
+  background-image: url("../../assets/LOGO.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.box3 {
+  /* border: 1px solid yellow; */
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+.button {
+  color: white;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  width: 25%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  background-color: var(--secondary-color);
+  text-align: center;
+}
+.button__register {
+  color: var(--text-color);
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  width: 25%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  background-color: var(--secondary-color);
+  text-align: center;
+}
+
+.button:hover {
+  background-color: var(--third-color);
+  color: var(--text-color);
+  transition: all 0.4s;
+}
+.button__register:hover {
+  background-color: var(--third-color);
+  color: var(--text-color);
+  transition: all 0.4s;
+}

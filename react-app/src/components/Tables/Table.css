@@ -1,11 +1,13 @@
+@import url("../../CSS/variables.css");
+
 .main__table {
   width: 100%;
-  background-color: #fff5;
-  color: black;
+  background-color: var(--background-color);
+  color: var(--text-color);
 
   overflow: scroll;
   margin: 0;
-  box-shadow: 0 0.4rem 0.8rem rgb(27, 26, 26);
+  box-shadow: 0 0.4rem 0.8rem var(--third-color);
   border-radius: 5px;
 }
 
@@ -21,20 +23,21 @@
   outline: none;
 }
 
-tr:nth-of-type(even) {
+/* tr:nth-of-type(even) {
   background-color: rgb(177, 172, 175);
-}
+} */
 th {
-  color: black !important;
+  color: var(--third-color) !important;
   padding: 5px;
   text-align: center;
 }
+
 tr {
   text-align: center;
 }
-tr:hover {
+tbody tr:hover {
   cursor: pointer;
-  background-color: rgb(122, 194, 28);
+  background-color: var(--third-color);
 }
 th:hover {
   cursor: pointer;
@@ -47,20 +50,41 @@ td {
   display: flex;
   gap: 10px;
   width: 100%;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   justify-content: center;
   align-items: center;
+  color: var(--text-color);
 
   button {
     width: 5%;
-
+    color: var(--text-color);
     border-radius: 5px;
     /* background-color: blueviolet; */
-    color: black;
+
+    background-color: var(--secondary-color);
     padding-top: 2.5px;
     padding-bottom: 2.5px;
   }
   button:hover {
     cursor: pointer;
+    background-color: var(--third-color);
   }
+}
+
+/* .click__popup {
+  position: fixed;
+  background-color: var(--primary-color);
+  border: 1px solid #ccc;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 8px 16px;
+  border-radius: 8px;
+  z-index: 1000;
+  display: none; 
+}
+
+.click__popup__show {
+  display: block;
+} */
+.highlighted__row {
+  background-color: var(--third-color) !important;
 }

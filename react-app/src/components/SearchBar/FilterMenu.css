@@ -1,15 +1,20 @@
+@import url("../../CSS/variables.css");
+
 .search__container {
   position: fixed;
-  right: 0;
-  top: 60px;
-  background-color: blueviolet;
+  right: 10%;
+  top: 7%;
+
+  background-color: var(--primary-color);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   width: 10%;
-  height: 100vw;
+  height: 90vh;
   gap: 20px;
+  border-radius: 15px;
+  z-index: 1001;
 }
 .prompt {
   strong {
@@ -21,7 +26,7 @@
   font-size: 1em;
   gap: 10px;
   padding: 5px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  /* border: 1px solid rgba(255, 255, 255, 0.5); */
 }
 
 .input__box {
@@ -31,7 +36,7 @@
 .input__box input {
   width: 100%;
   padding: 10px;
-  background-color: blueviolet;
+  background-color: var(--secondary-color);
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 5px;
   outline: none;
@@ -41,15 +46,17 @@
 .input__box span {
   position: absolute;
   padding: 10px;
+  pointer-events: none;
   left: 0px;
   color: white;
 }
-.input__box input:valid ~ span,
+.input__box input:not(:placeholder-shown) ~ span,
 .input__box input:focus ~ span {
-  color: #00dfc4;
+  color: var(--text-color);
   transform: translateX(10px) translateY(-7px);
+  transition: all 0.5s;
   padding: 0 10px;
-  background: blueviolet;
+  background: var(--primary-color);
   font-size: 1em;
   border-left: 1px solid #00dfc4;
   border-right: 1px solid #00dfc4;
@@ -69,6 +76,77 @@ form {
   width: 50%;
   padding-top: 1%;
   padding-bottom: 1%;
-  background-color: rgb(209, 60, 110);
+  background-color: var(--secondary-color);
   text-align: center;
+}
+.search__container button:hover {
+  background-color: var(--third-color);
+}
+
+.search__container--minimized {
+  width: 6%; /* Μικρότερο πλάτος όταν είναι minimized */
+  height: 3%;
+}
+
+.toggle__button {
+  position: absolute;
+  /* left: 0px; Το κουμπί έξω από το sidebar */
+  right: 3px;
+  top: 10px;
+  width: 25px !important;
+  height: 15px !important;
+  background-color: var(--secondary-color) !important;
+  color: white;
+  border: 1px solid green;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.toggle__button:hover {
+  background-color: var(--third-color) !important;
+}
+.minimized_search_text {
+  position: absolute;
+  top: 5px;
+  left: 2px;
+  color: white !important;
+}
+.input__box .error-tooltip {
+  visibility: visible;
+  background-color: var(--secondary-color);
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  top: 0px;
+  left: -240px;
+  z-index: 1;
+  max-width: 200px;
+  word-wrap: break-word;
+  white-space: normal;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.input__box .error-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 50%; /* Κεντράρισμα τριγώνου κάθετα */
+  left: 100%; /* Τοποθέτηση τριγώνου στη δεξιά πλευρά */
+  transform: translateY(-50%); /* Ακριβές κεντράρισμα */
+  border-width: 10px; /* Μέγεθος τριγώνου */
+  border-style: solid;
+  border-color: transparent transparent transparent var(--secondary-color); /* Δημιουργία τριγώνου */
+}
+
+.filtermenu-overlay {
+  position: fixed; /* Τοποθετεί το overlay πάνω από την οθόνη */
+  top: 0;
+  left: 0;
+  width: 100%; /* Καλύπτει ολόκληρο το πλάτος της οθόνης */
+  height: 100%; /* Καλύπτει ολόκληρο το ύψος της οθόνης */
+  background: rgba(0, 0, 0, 0.5); /* Ημιδιαφανές μαύρο φόντο */
+  z-index: 1000; /* Υψηλότερο z-index ώστε να βρίσκεται πάνω από την υπόλοιπη σελίδα */
 }
