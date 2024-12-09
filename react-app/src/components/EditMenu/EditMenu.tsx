@@ -4,13 +4,25 @@ import { useFilterMenuQuery } from "../SearchBar/useFilterMenuQuery";
 import { FieldError, SubmitHandler, useForm } from "react-hook-form";
 import { PistonFields } from "../../Types/PistonFields";
 import { useModalContext } from "../Context/ModalProvider";
+import { useEditQuery } from "./useEditQuery";
 
 type EditMenuProps = {
-  pistonData: PistonFields | {};
+  pistonData: PistonFields;
+  triggerUpdate: () => void;
+  setCode: (code: string | undefined) => void;
+  setActionType: (actionType: string) => void;
+  setAcceptedVisible: () => void;
 };
 
-export default function EditMenu({ pistonData }: EditMenuProps) {
+export default function EditMenu({
+  pistonData,
+  triggerUpdate,
+  setCode,
+  setActionType,
+  setAcceptedVisible,
+}: EditMenuProps) {
   const { fields, loading, formatedFields } = useFilterMenuQuery();
+  const { fetchEdit, waiting } = useEditQuery();
 
   const {
     register,
@@ -26,6 +38,15 @@ export default function EditMenu({ pistonData }: EditMenuProps) {
 
   const onSubmit: SubmitHandler<PistonFields> = (data) => {
     console.log("Data before sending ", data);
+    const old_code = pistonData.piston_code;
+    fetchEdit(data, old_code)
+      .then(triggerUpdate)
+      .then(() => {
+        setActionType("Edited");
+        setCode(old_code);
+        setAcceptedVisible();
+      })
+      .catch((error) => console.log(error));
     handleEditOnClose();
   };
   const validationRules = {
@@ -145,7 +166,9 @@ export default function EditMenu({ pistonData }: EditMenuProps) {
                 )}
               </div>
             ))}
-            <button type="submit">Search</button>
+            <button type="submit">
+              {waiting ? "Loading..." : "Submit Edit"}
+            </button>
           </form>
         </div>
         <hr className="separator"></hr>

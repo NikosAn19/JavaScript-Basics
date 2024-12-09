@@ -1,6 +1,6 @@
 import { PistonFields } from "../../../Types/PistonFields";
 import { useModalContext } from "../../Context/ModalProvider";
-
+import _ from "lodash";
 import "./ClickPopup.css";
 import { useDeleteQuery } from "./useDeleteQuery";
 
@@ -36,7 +36,9 @@ export default function ClickPopup({
   };
 
   const setEditData = (selectedRow: PistonFields) => {
-    updateEditData(selectedRow);
+    console.log("Selected Row in popup :", selectedRow);
+    const filteredData = _.omit(selectedRow, ["_id", "__v"]);
+    updateEditData(filteredData);
   };
 
   const handleEditOnClick = () => {

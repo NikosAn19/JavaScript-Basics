@@ -79,9 +79,38 @@ async function deletePiston(pistonData) {
   }
 }
 
+async function updatePiston(pistonData) {
+  const { old_code, ...fieldsToUpdate } = pistonData;
+  try {
+    const filteredFields = Object.entries(fieldsToUpdate).reduce(
+      (acc, [key, value]) => {
+        if (value !== null && value !== undefined && value !== "") {
+          acc[key] = value;
+        }
+        return acc;
+      },
+      {}
+    );
+    const results = await Piston.updateOne(
+      { piston_code: `${old_code}` },
+      { $set: filteredFields },
+      { runValidators: true }
+    );
+
+    if (results.modifiedCount === 0) {
+      return false;
+    } else {
+      return true;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 const Piston = mongoose.model("Piston", pistonSchema);
 
 module.exports.Piston = Piston;
 module.exports.getPistons = getPistons;
 module.exports.insertPiston = insertPiston;
 module.exports.deletePiston = deletePiston;
+module.exports.updatePiston = updatePiston;

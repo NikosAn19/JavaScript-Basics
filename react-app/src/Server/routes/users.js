@@ -6,10 +6,6 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const config = require("config");
 const authorizeRefreshToken = require("../middleware/authorizeRefreshToken");
-// router.get("/login", auth, async (req, res) => {
-//   const user = await User.findById(req.user._id).select("-password");
-//   res.send(user);
-// });
 
 //Register users route
 

@@ -3,6 +3,7 @@ const {
   getPistons,
   insertPiston,
   deletePiston,
+  updatePiston,
 } = require("../models/piston");
 const express = require("express");
 const router = express.Router();
@@ -11,12 +12,33 @@ const authorizeAccessToken = require("../middleware/authorizeAccessToken");
 
 // http://localhost:3000/pistons/getIdentities
 
-router.post("/", authorizeAccessToken, (req, res) => {
+router.post("/", authorizeAccessToken, async (req, res) => {
   let query = req.body;
   //here sanitize and validate input later
-  getPistons(query).then((response) => {
-    res.send(response);
-  });
+  try {
+    const results = await getPistons(query);
+    res.status(200).send(results);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.put("/editPiston", async (req, res) => {
+  const query = req.body;
+
+  try {
+    const hasUpdated = await updatePiston(query);
+    if (hasUpdated) {
+      return res
+        .status(201)
+        .send(
+          `Piston with piston code ${query.old_code} has updated successfully!`
+        );
+    }
+    return res.status(404).send(`Cant find piston in database`);
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 router.delete("/deletePiston", async (req, res) => {

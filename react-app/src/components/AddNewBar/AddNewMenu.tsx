@@ -12,12 +12,14 @@ type AddNewMenuProps = {
   setAcceptedVisible: () => void;
   setCode: (code: string | undefined) => void;
   triggerUpdate: () => void;
+  setActionType: (actonType: string) => void;
 };
 
 export default function AddNewMenu({
   setAcceptedVisible,
   setCode,
   triggerUpdate,
+  setActionType,
 }: AddNewMenuProps) {
   const { fields, loading, formatedFields } = useFilterMenuQuery();
   const [isMinimized, setIsMinimized] = useState(false);
@@ -119,6 +121,7 @@ export default function AddNewMenu({
 
   useEffect(() => {
     if (dataAccepted) {
+      setActionType("Added");
       setAcceptedVisible();
       setCode(code);
     }

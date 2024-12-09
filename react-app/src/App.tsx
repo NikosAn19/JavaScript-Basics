@@ -8,7 +8,7 @@ import Header from "./components/Header/Header";
 import ActionBar from "./components/ActionBar/ActionBar";
 import { useState } from "react";
 import AddNewMenu from "./components/AddNewBar/AddNewMenu";
-import ItemAdded from "./components/Popups/ItemAdded";
+import ItemAdded from "./components/Popups/Alerts/ItemAdded";
 import EditMenu from "./components/EditMenu/EditMenu";
 import { useModalContext } from "./components/Context/ModalProvider";
 
@@ -16,13 +16,19 @@ export default function App() {
   const { pistonData, setQuery, triggerUpdate } = useTableQuery();
 
   // elegxei to popup me to new entry
-  const [isAcceptedVisible, setAcceptedVisible] = useState(false);
+  const [isAlertVisible, setAlertVisible] = useState(false);
+
+  const [actionType, setActionType] = useState("");
+
+  const handleActionType = (actionType: string) => {
+    setActionType(actionType);
+  };
 
   const handleAcceptedVisible = () => {
-    setAcceptedVisible(true);
+    setAlertVisible(true);
     console.log("popup mounted");
     setTimeout(() => {
-      setAcceptedVisible(false);
+      setAlertVisible(false);
     }, 6000);
   };
 
@@ -51,14 +57,23 @@ export default function App() {
       </main>
 
       <FilterMenu setQuery={setQuery} />
-      {isAcceptedVisible && <ItemAdded itemType="Piston" codeName={code} />}
+      {isAlertVisible && (
+        <ItemAdded itemType="Piston" codeName={code} actionType={actionType} />
+      )}
 
       <AddNewMenu
         setAcceptedVisible={handleAcceptedVisible}
         setCode={handleCode}
+        setActionType={handleActionType}
         triggerUpdate={triggerUpdate}
       />
-      <EditMenu pistonData={editData} />
+      <EditMenu
+        setAcceptedVisible={handleAcceptedVisible}
+        pistonData={editData}
+        triggerUpdate={triggerUpdate}
+        setCode={handleCode}
+        setActionType={handleActionType}
+      />
     </>
   );
 }

@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
-import CheckMarkSVG from "../SVGs/CheckMarkSVG";
+import CheckMarkSVG from "../../SVGs/CheckMarkSVG";
 import "./ItemAdded.css";
 
 type ItemAddedProps = {
   itemType: string;
   codeName: string | undefined;
   duration?: number;
+  actionType: string;
 };
 
 export default function ItemAdded({
   itemType,
   codeName,
   duration = 3000,
+  actionType,
 }: ItemAddedProps) {
   const [showPopup, setShowPopup] = useState(false);
 
@@ -38,7 +40,7 @@ export default function ItemAdded({
         }
       >
         <p>
-          {itemType} with code {codeName} added{" "}
+          {itemType} with code {codeName} {actionType}{" "}
         </p>
         <CheckMarkSVG />
       </div>

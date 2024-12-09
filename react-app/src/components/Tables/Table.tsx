@@ -1,5 +1,5 @@
 import { useTable, usePagination } from "react-table";
-import { useMemo, useState, MouseEvent, useEffect } from "react";
+import { useMemo, useState, MouseEvent } from "react";
 import "./Table.css";
 import { PistonFields } from "../../Types/PistonFields";
 import ClickPopup from "../Popups/ClickPopup/ClickPopup";
