@@ -1,4 +1,4 @@
-@import url("./CSS/variables.css");
+@import url("./App.css");
 
 body {
   background-color: var(--background-color);

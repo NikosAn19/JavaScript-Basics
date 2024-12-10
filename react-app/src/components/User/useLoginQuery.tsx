@@ -1,6 +1,6 @@
 import axios, { AxiosError } from "axios";
 import { useState } from "react";
-import { useAuth } from "../AuthProvider";
+import { useAuth } from "../../components/Context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
 const END_POINT = "http://localhost:3000/login";
@@ -12,12 +12,13 @@ export const useLoginQuery = () => {
 
   const [loginError, setError] = useState<string | null>(null);
 
-  const { updateToken } = useAuth();
+  const { updateToken, updateUsername } = useAuth();
   const navigate = useNavigate();
 
   const loginUser = async (user: User) => {
     setError(null);
     try {
+      updateUsername(user.email);
       const response = await axios.post(END_POINT, user, {
         withCredentials: true,
       });

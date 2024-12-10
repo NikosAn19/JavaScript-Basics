@@ -1,16 +1,16 @@
 import "./App.css";
-import Table from "./components/Tables/Table";
-import SideBar from "./components/SideBar/SideBar";
-import FilterMenu from "./components/SearchBar/FilterMenu";
-import { useTableQuery } from "./components/Tables/useTableQuery";
-import Header from "./components/Header/Header";
+import Table from "../../components/Tables/Table";
+import SideBar from "../../components/SideBar/SideBar";
+import FilterMenu from "../../components/SearchBar/FilterMenu";
+import { useTableQuery } from "../../components/Tables/useTableQuery";
+import Header from "../../components/Header/Header";
 
-import ActionBar from "./components/ActionBar/ActionBar";
+import ActionBar from "../../components/ActionBar/ActionBar";
 import { useState } from "react";
-import AddNewMenu from "./components/AddNewBar/AddNewMenu";
-import ItemAdded from "./components/Popups/Alerts/ItemAdded";
-import EditMenu from "./components/EditMenu/EditMenu";
-import { useModalContext } from "./components/Context/ModalProvider";
+import AddNewMenu from "../../components/AddNewBar/AddNewMenu";
+import ItemAdded from "../../components/Popups/Alerts/ItemAdded";
+import EditMenu from "../../components/EditMenu/EditMenu";
+import { useModalContext } from "../../components/Context/ModalProvider";
 
 export default function App() {
   const { pistonData, setQuery, triggerUpdate } = useTableQuery();
@@ -43,7 +43,6 @@ export default function App() {
 
   return (
     <>
-      <Header />
       <main
         className={
           isAddNewVisible || isFilterMenuVisible || isEditVisible

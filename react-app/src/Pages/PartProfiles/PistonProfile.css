@@ -1,0 +1,13 @@
+@import url("../../CSS/variables.css");
+
+.piston-profile__container {
+  display: flex;
+  justify-content: center;
+  width: 50vw;
+  height: 70vh;
+  margin: 0 auto;
+  margin-top: 5vh;
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  border: 1px solid red;
+}

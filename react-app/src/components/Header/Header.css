@@ -115,8 +115,9 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  gap: 20px;
+
   width: 100%;
+  border: 1px solid red;
 }
 .button {
   color: white;
@@ -150,4 +151,13 @@
   background-color: var(--third-color);
   color: var(--text-color);
   transition: all 0.4s;
+}
+.username__text {
+  color: var(--text-color);
+  font-size: 18px;
+}
+b {
+  text-decoration: underline;
+  font-size: 14px;
+  margin-left: 10px;
 }

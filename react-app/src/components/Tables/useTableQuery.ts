@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { PistonFields } from "../../Types/PistonFields";
-import { useAuth } from "../AuthProvider";
+import { useAuth } from "../../components/Context/AuthProvider";
 
 const END_POINT = "http://localhost:3000/pistons";
 

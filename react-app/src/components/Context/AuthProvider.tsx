@@ -16,6 +16,8 @@ export type Auth = {
   updateCookie: (cookie: string) => void;
   isInitialized: boolean;
   axiosInstance: AxiosInstance;
+  username: string | undefined;
+  updateUsername: (username: string | undefined) => void;
 };
 
 const AuthContext = createContext<Auth | undefined>(undefined);
@@ -33,6 +35,7 @@ export const useAuth = () => {
 export default function AuthProvider({ children }: PropsWithChildren) {
   const [accessToken, setAccessToken] = useState<string | undefined>(undefined);
   const [isInitialized, setIsInitialized] = useState(false);
+  const [username, setUsername] = useState<string | undefined>("");
 
   const axiosInstance = axios.create({
     baseURL: "http://localhost:3000",
@@ -50,6 +53,10 @@ export default function AuthProvider({ children }: PropsWithChildren) {
     if (cookie !== undefined) {
       throw new Error("cookie is undefined");
     }
+  };
+
+  const updateUsername = (username: string | undefined) => {
+    setUsername(username);
   };
 
   // On refresh , request new Access Token.
@@ -156,6 +163,8 @@ export default function AuthProvider({ children }: PropsWithChildren) {
         updateCookie,
         isInitialized,
         axiosInstance,
+        username,
+        updateUsername,
       }}
     >
       {children}
